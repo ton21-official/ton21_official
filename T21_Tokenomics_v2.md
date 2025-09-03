@@ -11,7 +11,7 @@
 
 ## Links
 - WhitePaper v2 (RU/EN): [T21_WhitePaper_v2.pdf](T21_WhitePaper_v2.pdf)  
-- Telegram: [Ton21_Army (Official)](https://t.me/Ton21_Army
+- Telegram: [Ton21_Army (Official)]
 
 ---
 

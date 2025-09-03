@@ -1,33 +1,30 @@
 # Ton21 (T21) Official Repository 🚀
 
-Welcome to the official repository for **Ton21 (T21)** — a limited supply token (21,000,000) built on **TON Blockchain**.  
-Created for community, games and DeFi growth.  
+Ton21 (T21) — это токен сообщества на блокчейне TON с ограниченной эмиссией **21,000,000 T21**.  
+Создан для развития сообщества, игр и DeFi на TON.  
 
 ---
 
-## 📖 Documentation
-- [WhitePaper (EN)](./T21_WhitePaper.pdf)
-- [WhitePaper (RU)](./T21_WhitePaper_RU_OnePage_v4.pdf)
-- [Smart Contract](./Ton21_Contract.pdf)
-- [Token Metadata](./metadata.json)
+## 📄 Документы
+
+- [T21 WhitePaper (v2, RU/EN)](./T21_WhitePaper_RU_EN_v2.pdf)  
+- [T21 Tokenomics OnePager (v2, RU/EN)](./T21_OnePager_Tokenomics_RU_EN_v2.pdf)  
+
+### Архивные версии:
+- [T21 WhitePaper (v1)](./T21_WhitePaper_v1.pdf)  
+- [T21 Tokenomics OnePager (v1)](./T21_WhitePaper_OnePage_v4.pdf)  
 
 ---
 
-## 📊 Token Information
-- **Name:** Ton21  
-- **Symbol:** T21  
-- **Network:** TON (The Open Network)  
-- **Total Supply:** 21,000,000 T21  
-- **Decimals:** 9  
+## 📊 Токеномика (35/15/20/25/5)
+
+- 💧 Liquidity (DEX + CEX): **35%**  
+- 🎁 Airdrop & Community: **15%**  
+- 👥 Team & Development: **20%**  
+- 🤝 Partnerships & Ecosystem: **25%**  
+- 🛡 Reserve: **5%**  
 
 ---
 
-## 🔗 Useful Links
-- 🌐 Trade on DeDust: [dedust.io/swap/T21](https://dedust.io/swap/T21)  
-- 💬 Community: [Telegram Ton21 Army](https://t.me/Ton21_Army)  
-- 📄 CoinGecko Listing: *(pending)*  
-
----
-
-## 📜 License
-This repository is licensed under the **MIT License**.
+## 📌 Сообщество
+- Telegram: [Ton21Community](https://t.me/Ton21Community)

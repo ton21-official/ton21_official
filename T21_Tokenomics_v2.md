@@ -6,7 +6,7 @@
 **Contract address:** _(add your official T21 contract address here)_  
 
 **Links:**  
-- **WhitePaper v2 (RU/EN):** `T21_WhitePaper_v2.pdf`
+- **WhitePaper v2 (RU/EN):** [T21_WhitePaper_v2.pdf]
 - **Telegram:** https://t.me/Ton21_Army
 
 ---

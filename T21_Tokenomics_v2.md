@@ -7,11 +7,11 @@
 **Symbol:** T21  
 **Contract address:** (add your official T21 contract address here)
 
----
 
-## Links
-- WhitePaper v2 (RU/EN): [T21_WhitePaper_v2.pdf](T21_WhitePaper_v2.pdf)  
-- Telegram: [Ton21_Army (Official)]
+
+**Links:**  
+- **WhitePaper v2 (RU/EN):** `T21_WhitePaper_v2.pdf`
+- **Telegram:** https://t.me/Ton21_Army
 
 ---
 

@@ -35,9 +35,9 @@
 
 ### Links
 - 📄 [WhitePaper v3 (EN, RU, CN)](link_here)  
-- 🌐 [Telegram](https://t.me/Ton21Community)  
+- 🌐 [Telegram](https://t.me/Ton21_Army)  
 - 🐦 [Twitter](https://twitter.com/Ton21Official)  
-- 🎮 [Discord](https://discord.gg/yourlink)  
+- 🎮 [Discord](https://discord.gg/me2kuT9Pq)  
 - 💻 [GitHub](https://github.com/ton21-official)  
 
 ---
@@ -70,9 +70,9 @@
 
 ### Ссылки
 - 📄 [WhitePaper v3 (EN, RU, CN)](link_here)  
-- 🌐 [Telegram](https://t.me/Ton21Community)  
+- 🌐 [Telegram](https://t.me/Ton21_Army)  
 - 🐦 [Twitter](https://twitter.com/Ton21Official)  
-- 🎮 [Discord](https://discord.gg/yourlink)  
+- 🎮 [Discord](https://discord.gg/me2kuT9Pq)  
 - 💻 [GitHub](https://github.com/ton21-official)  
 
 ---
@@ -105,7 +105,7 @@
 
 ### 链接
 - 📄 [WhitePaper v3 (EN, RU, CN)](link_here)  
-- 🌐 [Telegram](https://t.me/Ton21Community)  
+- 🌐 [Telegram](https://t.me/Ton21_Army)  
 - 🐦 [Twitter](https://twitter.com/Ton21Official)  
-- 🎮 [Discord](https://discord.gg/yourlink)  
+- 🎮 [Discord](https://discord.gg/me2kuT9Pq)  
 - 💻 [GitHub](https://github.com/ton21-official)  

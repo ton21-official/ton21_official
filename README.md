@@ -9,7 +9,23 @@ Ton21 (T21) — это токен сообщества на блокчейне T
 
   ## 📑 Документы
 
-- **[T21 WhitePaper v3 (RU/EN)](T21_WhitePaper_v3_polished.md)**
+## 📄 WhitePaper v3
+
+- [English Version (PDF)](Ton21_WhitePaper_v3_EN.pdf)
+- [Русская версия (PDF)](Ton21_WhitePaper_v3_RU.pdf)
+- [中文版本 (PDF)](Ton21_WhitePaper_v3_CN.pdf)
+
+## 📄 Другие документы
+
+- [T21 Tokenomics v3](T21_Tokenomics_v3.md)
+- [T21 Contract (PDF)](Ton21_Contract.pdf)
+
+## 🗂️ Архивные версии
+
+- [T21 WhitePaper v1 (PDF)](T21_WhitePaper_v1.pdf)
+- [T21 WhitePaper v2 (PDF)](T21_WhitePaper_v2.pdf)
+- [T21 WhitePaper RU OnePage v1 (PDF)](Ton21_WhitePaper_RU_OnePage_v1.pdf)
+
 
    - **[T21 Tokenomics v3 (RU/EN)](T21_Tokenomics_v3.md)**  
 

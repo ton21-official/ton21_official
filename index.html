@@ -1,21 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Ton21 (T21) Official Repository</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ton21 (T21) — Community Token on TON</title>
+  <meta name="description" content="Ton21 (T21) — community-driven token on the TON blockchain. Fixed supply 21,000,000 T21. Transparent tokenomics, long-term vision." />
+  <link rel="icon" href="t21_logo.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ton21 (T21) — Community Token on TON" />
+  <meta property="og:description" content="Fixed supply 21,000,000 T21. Transparent tokenomics, long-term vision." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="t21_logo.png" />
+
+  <style>
+    :root{
+      --bg:#ffffff; --card:#f6f8fb; --fg:#0b1220; --muted:#5a6473;
+      --bd:#e3e8ef; --chip:#eef3ff;
+      --btn:#0d6efd; --btnh:#0b5ed7; --ok:#2ea44f; --okh:#238a3b;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b1220; --card:#151c2c; --fg:#e9eef6; --muted:#9aa6b2;
+        --bd:#26334a; --chip:#18243a; --btn:#4c8dff; --btnh:#3d74d6; --ok:#2ea44f; --okh:#238a3b;
+      }
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.55}
+    a{color:#fff}
+    header{max-width:1024px;margin:0 auto;padding:32px 20px 20px;text-align:center}
+    header .brand{display:flex;gap:12px;align-items:center;justify-content:center}
+    header img{width:56px;height:56px}
+    h1{margin:6px 0 2px;font-size:30px}
+    .subtitle{margin:0;color:var(--muted)}
+    .container{max-width:1024px;margin:0 auto;padding:0 20px 40px}
+    .buttons,.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 6px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--btn);color:#fff;text-decoration:none;font-weight:700;transition:.15s}
+    .btn:hover{background:var(--btnh)}
+    .btn--ok{background:var(--ok)} .btn--ok:hover{background:var(--okh)}
+    .btn--ghost{background:transparent;color:var(--fg);border:1px solid var(--bd)}
+    .btn--ghost:hover{background:var(--card)}
+    section{margin:16px 0;padding:18px;border-radius:14px;background:var(--card);border:1px solid var(--bd)}
+    h2{margin:0 0 12px;font-size:22px}
+    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:12px;border:1px solid var(--bd);background:var(--chip);color:var(--fg)}
+    .mono{font-family:var(--mono)}
+    .muted{color:var(--muted);font-size:14px;margin:10px 0 0}
+    ul,ol{margin:10px 0 0 22px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    @media (max-width:720px){ .grid{grid-template-columns:1fr} }
+    /* Lang switch */
+    .langbar{position:fixed;top:10px;right:10px;display:flex;gap:8px;z-index:10}
+    .langbar select{padding:8px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--fg);font-weight:700}
+    .copy{margin-left:8px;padding:8px 12px;border-radius:10px;border:0;cursor:pointer;color:#fff;background:var(--ok);font-weight:700}
+    .copy:hover{background:var(--okh)}
+    footer{padding:24px 0 40px;text-align:center;color:var(--muted)}
+  </style>
 </head>
 <body>
-  <h1>🚀 Ton21 (T21) Official Repository</h1>
-  <p>Ton21 (T21) — это токен сообщества на блокчейне TON с ограниченной эмиссией <b>21,000,000 T21</b>.
-  Создан для развития сообщества, игр и DeFi в TON.</p>
 
-  <h2>📑 Table of Contents</h2>
-  <ul>
-    <li><a href="Ton21_WhitePaper_v3_EN.pdf">WhitePaper v3 (English)</a></li>
-    <li><a href="Ton21_WhitePaper_v3_RU.pdf">WhitePaper v3 (Русский)</a></li>
-    <li><a href="Ton21_WhitePaper_v3_CN.pdf">WhitePaper v3 (中文)</a></li>
-    <li><a href="T21_Tokenomics_v3.md">Tokenomics</a></li>
-    <li><a href="Ton21_Contract.pdf">Contract</a></li>
-  </ul>
+<!-- Language selector -->
+<div class="langbar" aria-label="Language switcher">
+  <select id="langSelect" title="Language">
+    <option value="ru">RU</option>
+    <option value="en">EN</option>
+    <option value="cn">中文</option>
+  </select>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="brand">
+    <img src="t21_logo.png" alt="Ton21 logo" />
+    <div>
+      <h1>Ton21 (T21)</h1>
+      <p class="subtitle" id="subtitle"></p>
+    </div>
+  </div>
+
+  <nav class="buttons" aria-label="Top actions">
+    <a class="btn" href="https://t.me/Ton21_Army" target="_blank" rel="noopener">Telegram</a>
+    <a class="btn" href="https://github.com/ton21-official/ton21-site" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="Ton21_WhitePaper_v3_EN.pdf" target="_blank" rel="noopener">WhitePaper v3 (EN)</a>
+    <a class="btn" href="Ton21_WhitePaper_v3_RU.pdf" target="_blank" rel="noopener">WhitePaper v3 (RU)</a>
+    <a class="btn" href="Ton21_WhitePaper_v3_CN.pdf" target="_blank" rel="noopener">WhitePaper v3 (CN)</a>
+    <a class="btn" href="https://twitter.com/Ton21Official" target="_blank" rel="noopener">Twitter</a>
+    <a class="btn" href="https://discord.gg/me2kuT9Pq" target="_blank" rel="noopener">Discord</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Contract + Fast Links -->
+  <section aria-labelledby="contractTitle">
+    <h2 id="contractTitle"></h2>
+    <div class="grid">
+      <div>
+        <div class="chip mono" id="addr" aria-label="Jetton address">
+          EQBLgiPMly982IMGqauqdX0Fe_N01arD-LhlKSfxBd8rzYRG
+        </div>
+        <button class="copy" id="copyBtn" type="button" aria-label="Copy address">Copy</button>
+        <p class="muted" id="note"></p>
+      </div>
+      <div>
+        <div class="row" style="justify-content:flex-start">
+          <a class="btn" href="https://tonviewer.com/jetton/EQBLgiPMly982IMGqauqdX0Fe_N01arD-LhlKSfxBd8rzYRG" target="_blank" rel="noopener">Tonviewer</a>
+          <a class="btn" href="https://tonscan.org/jetton/EQBLgiPMly982IMGqauqdX0Fe_N01arD-LhlKSfxBd8rzYRG" target="_blank" rel="noopener">Tonscan</a>
+          <a class="btn" href="https://tonscan.org/token/T21" target="_blank" rel="noopener">Tonscan (Price)</a>
+          <a class="btn" href="https://dedust.io" target="_blank" rel="noopener">DeDust</a>
+          <a class="btn" href="https://ston.fi" target="_blank" rel="noopener">STON.fi</a>
+          <a class="btn" href="https://dyor.io" target="_blank" rel="noopener">DYOR.io</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tokenomics -->
+  <section id="tokenomics" aria-labelledby="tokTitle">
+    <h2 id="tokTitle">📊 Tokenomics</h2>
+    <ul>
+      <li>💧 Liquidity (DEX + CEX): 35%</li>
+      <li>👨‍💻 Team & Development: 20%</li>
+      <li>🌍 Partnerships & Ecosystem: 25%</li>
+      <li>🎁 Airdrop & Community: 15%</li>
+      <li>🔒 Reserve: 5% (locked until 20.05.2035)</li>
+    </ul>
+  </section>
+
+  <!-- Roadmap (short, language-aware) -->
+  <section aria-labelledby="rmTitle">
+    <h2 id="rmTitle">📅 Roadmap</h2>
+    <ul id="roadmapList"></ul>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section aria-labelledby="msTitle">
+    <h2 id="msTitle">🌍 Mission & Vision / Миссия и Видение</h2>
+    <p id="missionEN"><b>EN:</b> Ton21 (T21) is a community-driven token on the TON blockchain with a fixed supply of 21,000,000 T21. Our mission is to unite DeFi, gaming, and community growth in one ecosystem. We believe in long-term development, transparency, and people’s power to build the future of finance together.</p>
+    <p id="missionRU"><b>RU:</b> Ton21 (T21) — токен сообщества на блокчейне TON с фиксированной эмиссией 21,000,000 T21. Наша миссия — объединить DeFi, игровые проекты и рост сообщества в одной экосистеме. Мы верим в долгосрочное развитие, прозрачность и силу людей, которые вместе формируют будущее финансов.</p>
+    <p id="missionCN"><b>中文:</b> Ton21 (T21) 是基于 TON 区块链的社区驱动型代币，总量固定为 21,000,000 T21。我们的使命是把 DeFi、游戏与社区增长融合在一个生态中，并以长期主义与透明性共同建设未来金融。</p>
+  </section>
+
+  <!-- Community & Contributors -->
+  <section aria-labelledby="cmTitle">
+    <h2 id="cmTitle">🤝 Community & Contributors / Сообщество и Участники</h2>
+    <div class="grid">
+      <div>
+        <p><b>EN:</b> Ton21 is built by the community.</p>
+        <ul>
+          <li>Developers — create and maintain smart contracts.</li>
+          <li>Marketing team — spreads the word about Ton21.</li>
+          <li>Community leaders — organize contests & events.</li>
+        </ul>
+      </div>
+      <div>
+        <p><b>RU:</b> Ton21 создаётся сообществом.</p>
+        <ul>
+          <li>Разработчики — создают и поддерживают смарт-контракты.</li>
+          <li>Маркетинг — рассказывает миру о Ton21.</li>
+          <li>Лидеры сообщества — проводят конкурсы и ивенты.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extended Roadmap -->
+  <section aria-labelledby="rmeTitle">
+    <h2 id="rmeTitle">🚀 Roadmap (Extended) / Дорожная карта (расширенная)</h2>
+    <ul id="roadmapExt"></ul>
+  </section>
+
+  <!-- How to Buy -->
+  <section aria-labelledby="buyTitle">
+    <h2 id="buyTitle">💎 How to Buy T21 / Как купить T21</h2>
+    <div class="grid">
+      <div>
+        <p><b>EN:</b></p>
+        <ol>
+          <li>Download Tonkeeper (or any TON wallet).</li>
+          <li>Buy TON (Binance, OKX, Bybit).</li>
+          <li>Go to DeDust or STON.fi.</li>
+          <li>Connect wallet and swap TON → T21.</li>
+          <li>Welcome to the Ton21 family! 🚀</li>
+        </ol>
+      </div>
+      <div>
+        <p><b>RU:</b></p>
+        <ol>
+          <li>Установите Tonkeeper (или любой TON-кошелёк).</li>
+          <li>Купите TON (Binance, OKX, Bybit).</li>
+          <li>Зайдите на DeDust или STON.fi.</li>
+          <li>Подключите кошелёк и обменяйте TON → T21.</li>
+          <li>Добро пожаловать в семью Ton21! 🚀</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section aria-labelledby="stTitle">
+    <h2 id="stTitle">📈 Stats / Статистика</h2>
+    <div class="grid">
+      <div>
+        <p><b>EN:</b></p>
+        <ul>
+          <li>Current Price: ~ $0.0019</li>
+          <li>Total Supply: 21,000,000 T21</li>
+          <li>Holders: 170+</li>
+          <li>Liquidity: ~ $240</li>
+          <li>Market Cap: ~ $39,000</li>
+        </ul>
+      </div>
+      <div>
+        <p><b>RU:</b></p>
+        <ul>
+          <li>Текущая цена: ~ $0.0019</li>
+          <li>Общее предложение: 21,000,000 T21</li>
+          <li>Держателей: 170+</li>
+          <li>Ликвидность: ~ $240</li>
+          <li>Капитализация: ~ $39,000</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted">* Числа примерные. Для актуальных данных используйте ссылки выше (Tonviewer / Tonscan / DeDust).</p>
+  </section>
+
+  <!-- Security -->
+  <section aria-labelledby="secTitle">
+    <h2 id="secTitle">🔒 Security & Transparency / Безопасность и Прозрачность</h2>
+    <div class="grid">
+      <div>
+        <p><b>EN:</b></p>
+        <ul>
+          <li>Total supply fixed: 21,000,000 T21.</li>
+          <li>Reserve fund (5%) locked until May 20, 2035.</li>
+          <li>Liquidity & ecosystem funds managed transparently by the community.</li>
+          <li>Contract verified on TonScan and available for everyone.</li>
+        </ul>
+      </div>
+      <div>
+        <p><b>RU:</b></p>
+        <ul>
+          <li>Общее предложение фиксировано: 21,000,000 T21.</li>
+          <li>Резерв (5%) заблокирован до 20 мая 2035 года.</li>
+          <li>Фонды ликвидности и экосистемы управляются прозрачно.</li>
+          <li>Контракт верифицирован на TonScan и доступен всем.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© Ton21 · Built with ❤️ by the community</footer>
+
+<script>
+  // ------ Language strings ------
+  const T = {
+    ru: {
+      subtitle: "Токен сообщества на блокчейне TON. Эмиссия: 21,000,000 T21.",
+      contractTitle: "📜 Контракт",
+      copy: "Скопировать",
+      note: "Если Tonviewer показывает 404 — используйте Tonscan.",
+      roadmap: [
+        "<b>Q4 2025:</b> Запуск сайта, WhitePaper v3, листинг на DEX",
+        "<b>2026:</b> Листинги на CEX, запуск игр и DeFi-проектов с T21",
+        "<b>2027:</b> DAO-управление, стейкинг, интеграции TON",
+        "<b>2028:</b> Глобальные партнёрства, расширение экосистемы"
+      ],
+      roadmapExt: [
+        "<b>Q4 2025:</b> Сайт, WhitePaper v3, первые партнёрства и DEX-листинг",
+        "<b>2026:</b> CEX-листинги, запуск игр и DeFi-продуктов с T21",
+        "<b>2027:</b> DAO-голосование, стейкинг, крупные интеграции",
+        "<b>2028:</b> Масштабирование экосистемы T21 и глобальные партнёрства"
+      ],
+      copied: "Скопировано!"
+    },
+    en: {
+      subtitle: "A community-driven token on the TON blockchain. Total supply: 21,000,000 T21.",
+      contractTitle: "📜 Contract",
+      copy: "Copy",
+      note: "If Tonviewer shows 404 — use Tonscan.",
+      roadmap: [
+        "<b>Q4 2025:</b> Website launch, WhitePaper v3, first DEX listings",
+        "<b>2026:</b> CEX listings, launch of games & DeFi projects with T21",
+        "<b>2027:</b> DAO governance, staking, TON integrations",
+        "<b>2028:</b> Global partnerships, adoption, ecosystem expansion"
+      ],
+      roadmapExt: [
+        "<b>Q4 2025:</b> Site, WhitePaper v3, first partnerships & DEX listing",
+        "<b>2026:</b> CEX listings, launch of games & DeFi with T21",
+        "<b>2027:</b> DAO voting, staking, major integrations",
+        "<b>2028:</b> Scaling the T21 ecosystem & global partnerships"
+      ],
+      copied: "Copied!"
+    },
+    cn: {
+      subtitle: "社区驱动的 TON 区块链代币。总供应量：21,000,000 T21。",
+      contractTitle: "📜 合约",
+      copy: "复制",
+      note: "若 Tonviewer 显示 404，请使用 Tonscan。",
+      roadmap: [
+        "<b>2025 Q4：</b> 网站上线、发布 WhitePaper v3、首次 DEX 上线",
+        "<b>2026：</b> CEX 上市，推出基于 T21 的游戏与 DeFi 项目",
+        "<b>2027：</b> DAO 治理、质押、与 TON 生态深度集成",
+        "<b>2028：</b> 全球合作与生态扩张"
+      ],
+      roadmapExt: [
+        "<b>2025 Q4：</b> 网站、白皮书 v3、首批合作与 DEX 上线",
+        "<b>2026：</b> CEX 上市，游戏与 DeFi 项目发布",
+        "<b>2027：</b> DAO 投票、质押、重要集成",
+        "<b>2028：</b> T21 生态规模化与全球合作"
+      ],
+      copied: "已复制！"
+    }
+  };
+
+  // ------ Render by language ------
+  let lang = "ru";
+  const $ = (id)=>document.getElementById(id);
+  const listTo = (el, items)=>{ el.innerHTML=""; items.forEach(i=>{const li=document.createElement("li"); li.innerHTML=i; el.appendChild(li);}); };
+
+  function render(){
+    const t = T[lang];
+    $("subtitle").innerHTML = t.subtitle;
+    $("contractTitle").innerHTML = t.contractTitle;
+    $("note").innerHTML = t.note;
+    $("copyBtn").innerText = t.copy;
+
+    listTo($("roadmapList"), t.roadmap);
+    listTo($("roadmapExt"), t.roadmapExt);
+
+    // Mission visibility: показываем все 3, но порядок RU/EN/中文 не меняем
+    $("missionEN").style.display = "block";
+    $("missionRU").style.display = "block";
+    $("missionCN").style.display = "block";
+  }
+
+  // init
+  render();
+
+  // Lang select
+  $("langSelect").addEventListener("change", (e)=>{
+    lang = e.target.value;
+    render();
+  });
+
+  // Copy contract
+  $("copyBtn").addEventListener("click", async ()=>{
+    try{
+      const addr = $("addr").innerText.trim();
+      await navigator.clipboard.writeText(addr);
+      const old = $("copyBtn").innerText;
+      $("copyBtn").innerText = T[lang].copied;
+      setTimeout(()=> $("copyBtn").innerText = old, 1200);
+    }catch(e){}
+  });
+</script>
 </body>
 </html>

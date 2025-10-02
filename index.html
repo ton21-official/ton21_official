@@ -1,212 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ton21 Project - Tokenomics v3</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ton21 (T21) — Tokenomics v3</title>
+  <meta name="description" content="Ton21 (T21) Tokenomics v3 — total supply 21,000,000 T21. Liquidity, Airdrop & Community, Team & Development, Partnerships & Ecosystem, Reserve." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #1B0B2E, #000000);
-      color: #fff;
-      text-align: center;
+    :root{
+      --bg:#0f0a1a;
+      --panel:#1f1a32;
+      --card:#2a2445;
+      --card-soft:#312b55;
+      --text:#ffffff;
+      --muted:#cfd2e3;
+      --accent:#8d78ff;
+      --line:#443d6b;
     }
-    header {
-      background: #2A0A47;
-      padding: 20px;
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:inherit}
+    .wrap{max-width:1080px;margin:0 auto;padding:28px 18px}
+    .hero{background:linear-gradient(160deg,#241a4a 0%,#1b1440 100%);padding:26px 18px;border-radius:14px;text-align:center;position:sticky;top:0;z-index:2}
+    .title{margin:0;font-size:28px;font-weight:800;letter-spacing:.2px}
+    .subtitle{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .lang-switch{margin:14px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);background:#140f26;color:#fff;padding:6px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+    .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#100c1c}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:22px 0;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+    .card h2{margin:0 0 12px;font-size:20px}
+    table{width:100%;border-collapse:collapse;background:var(--card-soft);border-radius:10px;overflow:hidden}
+    th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left}
+    th{background:#241e49;font-weight:800}
+    tfoot td{font-weight:800;background:#241e49}
+    .bar{height:10px;background:#3a355d;border-radius:999px;overflow:hidden}
+    .bar > span{display:block;height:100%;border-radius:999px}
+    .bar.liq > span{background:#4a7aff}
+    .bar.air > span{background:#ff8a3d}
+    .bar.team > span{background:#4dd47a}
+    .bar.part > span{background:#c17bff}
+    .bar.res > span{background:#ffcd4d}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:14px}
+    .links{display:flex;flex-wrap:wrap;gap:10px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:9px;border:1px solid var(--line);
+      background:#191430;color:#fff;text-decoration:none;font-weight:700
     }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-    header p {
-      margin: 5px 0;
-      font-size: 16px;
-    }
-    .lang-switch {
-      margin-top: 10px;
-    }
-    .lang-switch button {
-      background: #fff;
-      color: #2A0A47;
-      border: none;
-      padding: 6px 12px;
-      margin: 0 5px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      background: #fff;
-      color: #000;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
-      text-align: center;
-    }
-    th {
-      background: #2A0A47;
-      color: #fff;
-    }
-    .progress-bar {
-      height: 18px;
-      border-radius: 8px;
-      background: #ddd;
-      overflow: hidden;
-    }
-    .progress {
-      height: 100%;
-      text-align: right;
-      padding-right: 5px;
-      color: #fff;
-      font-size: 12px;
-    }
-    .liq { background: #007bff; width: 35%; }
-    .air { background: #ff9800; width: 15%; }
-    .team { background: #4caf50; width: 20%; }
-    .eco { background: #9c27b0; width: 25%; }
-    .res { background: #795548; width: 5%; }
-    .notes {
-      text-align: left;
-      margin-top: 20px;
-    }
-    .links {
-      margin-top: 25px;
-    }
-    .links a {
-      text-decoration: none;
-      margin: 5px;
-      padding: 10px 16px;
-      background: #2A0A47;
-      color: #fff;
-      border-radius: 6px;
-      display: inline-block;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .links a:hover {
-      background: #ff9800;
-    }
-    footer {
-      margin-top: 30px;
-      padding: 15px;
-      font-size: 14px;
-      background: #2A0A47;
-      color: #fff;
+    .btn:hover{background:#241d44}
+    .btn.primary{background:var(--accent);color:#0e0b19;border-color:transparent}
+    .note{padding:12px 14px;background:#241d44;border:1px solid var(--line);border-radius:10px}
+    footer{opacity:.7;text-align:center;margin:16px 0 6px}
+    /* small */
+    @media (max-width:720px){
+      .title{font-size:22px}
+      th,td{padding:10px}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🚀 Ton21 (T21) Tokenomics v3</h1>
-    <p>Total Supply: 21,000,000 T21</p>
-    <div class="lang-switch">
-      <button>EN</button>
-      <button>RU</button>
-      <button>CN</button>
-    </div>
-  </header>
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <h1 class="title">🚀 <span data-i18n="t_title">Ton21 (T21) Tokenomics v3</span></h1>
+      <p class="subtitle"><span data-i18n="t_supply">Total Supply</span>: 21,000,000 T21</p>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="chip" id="btn-en" aria-pressed="true" onclick="setLang('en')">EN</button>
+        <button class="chip" id="btn-ru" aria-pressed="false" onclick="setLang('ru')">RU</button>
+        <button class="chip" id="btn-cn" aria-pressed="false" onclick="setLang('cn')">CN</button>
+      </div>
+    </header>
 
-  <div class="container">
-    <h2>Allocation</h2>
-    <table>
-      <tr>
-        <th>Category</th>
-        <th>%</th>
-        <th>Amount (T21)</th>
-      </tr>
-      <tr>
-        <td>💧 Liquidity (DEX + CEX)</td>
-        <td>35%</td>
-        <td>7,350,000</td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <div class="progress-bar"><div class="progress liq">35%</div></div>
-        </td>
-      </tr>
-      <tr>
-        <td>🎁 Airdrop & Community</td>
-        <td>15%</td>
-        <td>3,150,000</td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <div class="progress-bar"><div class="progress air">15%</div></div>
-        </td>
-      </tr>
-      <tr>
-        <td>👥 Team & Development</td>
-        <td>20%</td>
-        <td>4,200,000</td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <div class="progress-bar"><div class="progress team">20%</div></div>
-        </td>
-      </tr>
-      <tr>
-        <td>🌍 Partnerships & Ecosystem</td>
-        <td>25%</td>
-        <td>5,250,000</td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <div class="progress-bar"><div class="progress eco">25%</div></div>
-        </td>
-      </tr>
-      <tr>
-        <td>🏦 Reserve</td>
-        <td>5%</td>
-        <td>1,050,000</td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <div class="progress-bar"><div class="progress res">5%</div></div>
-        </td>
-      </tr>
-      <tr>
-        <th>Total</th>
-        <th>100%</th>
-        <th>21,000,000</th>
-      </tr>
-    </table>
+    <!-- ALLOCATION -->
+    <section class="card">
+      <h2 data-i18n="t_alloc">Allocation</h2>
+      <table aria-describedby="allocation-desc">
+        <thead>
+          <tr>
+            <th style="width:48%" data-i18n="t_cat">Category</th>
+            <th style="width:10%">%</th>
+            <th style="width:42%" data-i18n="t_amt">Amount (T21)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span data-i18n="c_liq">Liquidity (DEX + CEX)</span><div class="bar liq"><span style="width:35%"></span></div></td>
+            <td>35%</td><td>7,350,000</td>
+          </tr>
+          <tr>
+            <td><span data-i18n="c_air">Airdrop & Community</span><div class="bar air"><span style="width:15%"></span></div></td>
+            <td>15%</td><td>3,150,000</td>
+          </tr>
+          <tr>
+            <td><span data-i18n="c_team">Team & Development</span><div class="bar team"><span style="width:20%"></span></div></td>
+            <td>20%</td><td>4,200,000</td>
+          </tr>
+          <tr>
+            <td><span data-i18n="c_part">Partnerships & Ecosystem</span><div class="bar part"><span style="width:25%"></span></div></td>
+            <td>25%</td><td>5,250,000</td>
+          </tr>
+          <tr>
+            <td><span data-i18n="c_res">Reserve</span><div class="bar res"><span style="width:5%"></span></div></td>
+            <td>5%</td><td>1,050,000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><strong data-i18n="t_total">Total</strong></td>
+            <td><strong>100%</strong></td>
+            <td><strong>21,000,000</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+      <p id="allocation-desc" class="muted" style="margin:8px 2px 0"></p>
+    </section>
 
-    <div class="notes">
-      <h3>Notes & Vesting</h3>
-      <p>💧 <b>Liquidity (35%)</b>: Used to bootstrap and deepen liquidity. LP tokens in multisig with transparent policy.</p>
-      <p>🎁 <b>Airdrop & Community (15%)</b>: Gradual distribution for quests, giveaways, ambassadors, incentives.</p>
-      <p>👥 <b>Team & Development (20%)</b>: 6-month cliff, then 24-month linear vesting (~175,000 T21/month).</p>
-      <p>🌍 <b>Partnerships & Ecosystem (25%)</b>: 3-month cliff, then 12-month linear vesting (~437,500 T21/month).</p>
-      <p>🏦 <b>Reserve (5%)</b>: Locked until 20 May 2035.</p>
-      <p>🔒 <b>Transparency</b>: All allocations stored in multisig/time-locked wallets.</p>
-    </div>
+    <!-- NOTES & VESTING -->
+    <section class="card">
+      <h2 data-i18n="t_notes">Notes & Vesting</h2>
+      <div class="grid">
+        <div class="note" data-i18n="n_liq">Liquidity (35%): Used to bootstrap and deepen liquidity. LP tokens in multisig with transparent policy.</div>
+        <div class="note" data-i18n="n_air">Airdrop & Community (15%): Gradual distribution for quests, giveaways, ambassadors, incentives.</div>
+        <div class="note" data-i18n="n_team">Team & Development (20%): 6-month cliff, then 24-month linear vesting (~175,000 T21/month).</div>
+        <div class="note" data-i18n="n_part">Partnerships & Ecosystem (25%): 3-month cliff, then 12-month linear vesting (~437,500 T21/month).</div>
+        <div class="note" data-i18n="n_res">Reserve (5%): Locked until 20 May 2035.</div>
+        <div class="note" data-i18n="n_transp">Transparency: All allocations stored in multisig/time-locked wallets.</div>
+      </div>
+    </section>
 
-    <div class="links">
-      <a href="#">📄 WhitePaper EN</a>
-      <a href="#">📄 WhitePaper RU</a>
-      <a href="#">📄 WhitePaper CN</a>
-      <a href="#">💬 Telegram</a>
-      <a href="#">🐦 Twitter</a>
-      <a href="#">🎧 Discord</a>
-      <a href="#">💻 GitHub</a>
-    </div>
+    <!-- LINKS -->
+    <section class="card">
+      <h2 data-i18n="t_links">Links</h2>
+      <div class="links">
+        <a class="btn primary" id="wp-en" href="Ton21_WhitePaper_v3_EN.pdf" target="_blank">📄 WhitePaper EN</a>
+        <a class="btn primary" id="wp-ru" href="Ton21_WhitePaper_v3_RU.pdf" target="_blank">📄 WhitePaper RU</a>
+        <a class="btn primary" id="wp-cn" href="Ton21_WhitePaper_v3_CN.pdf" target="_blank">📄 WhitePaper CN</a>
+        <a class="btn" href="https://t.me/Ton21_Army" target="_blank">📱 Telegram</a>
+        <a class="btn" href="https://twitter.com/Ton21Official" target="_blank">🐦 Twitter</a>
+        <a class="btn" href="https://discord.gg/me2kuJP9q" target="_blank">🎧 Discord</a>
+        <a class="btn" href="https://github.com/ton21-official" target="_blank">💻 GitHub</a>
+      </div>
+    </section>
+
+    <footer>© 2025 Ton21 Project. All Rights Reserved</footer>
   </div>
 
-  <footer>
-    © 2025 Ton21 Project. All Rights Reserved
-  </footer>
+  <script>
+    // i18n dictionary
+    const I18N = {
+      en:{
+        t_title:"Ton21 (T21) Tokenomics v3",
+        t_supply:"Total Supply",
+        t_alloc:"Allocation",
+        t_cat:"Category",
+        t_amt:"Amount (T21)",
+        t_total:"Total",
+        t_notes:"Notes & Vesting",
+        t_links:"Links",
+        c_liq:"Liquidity (DEX + CEX)",
+        c_air:"Airdrop & Community",
+        c_team:"Team & Development",
+        c_part:"Partnerships & Ecosystem",
+        c_res:"Reserve",
+        n_liq:"Liquidity (35%): Used to bootstrap and deepen liquidity. LP tokens in multisig with transparent policy.",
+        n_air:"Airdrop & Community (15%): Gradual distribution for quests, giveaways, ambassadors, incentives.",
+        n_team:"Team & Development (20%): 6-month cliff, then 24-month linear vesting (~175,000 T21/month).",
+        n_part:"Partnerships & Ecosystem (25%): 3-month cliff, then 12-month linear vesting (~437,500 T21/month).",
+        n_res:"Reserve (5%): Locked until 20 May 2035.",
+        n_transp:"Transparency: All allocations stored in multisig/time-locked wallets."
+      },
+      ru:{
+        t_title:"Ton21 (T21) — Токеномика v3",
+        t_supply:"Общее предложение",
+        t_alloc:"Распределение",
+        t_cat:"Категория",
+        t_amt:"Количество (T21)",
+        t_total:"Итого",
+        t_notes:"Примечания и вестинг",
+        t_links:"Ссылки",
+        c_liq:"Ликвидность (DEX + CEX)",
+        c_air:"Эйрдроп и Сообщество",
+        c_team:"Команда и Разработка",
+        c_part:"Партнёрства и Экосистема",
+        c_res:"Резерв",
+        n_liq:"Ликвидность (35%): запуск и поддержка ликвидности. LP-токены в мультисиге с прозрачной политикой.",
+        n_air:"Эйрдроп и Сообщество (15%): постепенная выдача за квесты, розыгрыши, амбассадорство, активность.",
+        n_team:"Команда и Разработка (20%): клиф 6 мес., затем 24 мес. линейный вестинг (~175 000 T21/мес).",
+        n_part:"Партнёрства и Экосистема (25%): клиф 3 мес., затем 12 мес. линейный вестинг (~437 500 T21/мес).",
+        n_res:"Резерв (5%): заморожено до 20 мая 2035.",
+        n_transp:"Прозрачность: все аллокации в мультисиг/тайм-лок кошельках."
+      },
+      cn:{
+        t_title:"Ton21 (T21) 代币经济学 v3",
+        t_supply:"总代币量",
+        t_alloc:"分配",
+        t_cat:"类别",
+        t_amt:"数量 (T21)",
+        t_total:"合计",
+        t_notes:"说明与解锁",
+        t_links:"链接",
+        c_liq:"流动性 (DEX + CEX)",
+        c_air:"空投与社区",
+        c_team:"团队与开发",
+        c_part:"合作伙伴与生态系统",
+        c_res:"储备",
+        n_liq:"流动性 (35%): 用于启动与增强流动性。LP 代币存于多签钱包并公开透明。",
+        n_air:"空投与社区 (15%): 任务、赠送、社区激励等按计划逐步发放。",
+        n_team:"团队与开发 (20%): 6 个月锁定期，之后 24 个月线性解锁（约 175,000 T21/月）。",
+        n_part:"合作伙伴与生态系统 (25%): 3 个月锁定期，之后 12 个月线性解锁（约 437,500 T21/月）。",
+        n_res:"储备 (5%): 锁定至 2035 年 5 月 20 日。",
+        n_transp:"透明度：所有分配存于多签/时间锁定钱包。"
+      }
+    };
+
+    function setLang(lang){
+      // persist
+      localStorage.setItem("t21_lang", lang);
+      document.documentElement.lang = lang;
+
+      // toggle buttons
+      ["en","ru","cn"].forEach(l=>{
+        document.getElementById("btn-"+l).setAttribute("aria-pressed", l===lang ? "true" : "false");
+      });
+
+      // apply translations
+      const dict = I18N[lang];
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key]) el.textContent = dict[key];
+      });
+    }
+
+    // init on load
+    const saved = localStorage.getItem("t21_lang") || "en";
+    setLang(saved);
+  </script>
 </body>
 </html>
